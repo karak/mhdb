@@ -7,11 +7,12 @@ export default class HtmlSquraper {
     const $ = this.load(html);
 
     const $trs = this.parseRows($);
-    const totalCount = $trs.length; // TODO: get from actual data
+    const count = Math.max(0, $trs.length - 1);
+    const totalCount = count; // TODO: get from actual data
     const hasNext = false; // TODO: get from actual data
 
     // The following line -- even "empty" map function -- causes out of memory. BUG of Cheerio?
-    const items = $trs.map((i, tr) => {
+    const items = $trs.slice(0, totalCount).map((i, tr) => {
       const $tds = $('td', tr);
       const id = this.getCid($tds.eq(0));
       const body = this.getBody($tds.eq(0));
