@@ -6,13 +6,10 @@ export default class HtmlSquraper {
   parseWorks(html: string): SearchResult<Work> {
     const $ = this.load(html);
 
-    const $trs = this.parseRows($);
-    const count = Math.max(0, $trs.length - 1);
-    const totalCount = count; // TODO: get from actual data
-    const hasNext = false; // TODO: get from actual data
+    const $trs = this.parseWorkRows($);
+    const { totalCount, hasNext } = this.parseCountRows($);
 
-    // The following line -- even "empty" map function -- causes out of memory. BUG of Cheerio?
-    const items = $trs.slice(0, totalCount).map((i, tr) => {
+    const items = $trs.map((i, tr) => {
       const $tds = $('td', tr);
       const id = this.getCid($tds.eq(0));
       const body = this.getBody($tds.eq(0));
@@ -32,8 +29,10 @@ export default class HtmlSquraper {
     });
   }
 
-  private parseRows($: CheerioStatic) {
-    return $('a[name="result"] + table a[name="top"] + br + table + table + table tr');
+  private parseWorkRows($: CheerioStatic) {
+    let $trs = $('a[name="result"] + table a[name="top"] + br + table + table + table tr');
+    $trs = $trs.slice(0, Math.max(0, $trs.length - 1));
+    return $trs;
   }
 
   private getCid($td1: Cheerio) {
@@ -52,5 +51,31 @@ export default class HtmlSquraper {
 
   private getAuthor($td2: Cheerio) {
     return $td2.text();
+  }
+
+  private parseCountRows($: CheerioStatic) {
+    const $tds = $('a[name="result"] + table table > tbody > tr:last-child > td table td');
+
+    const totalCount = this.getTotalCount($tds.eq(0));
+    const [start, end] = this.getCurrentRange($tds.eq(1)) || [0, totalCount];
+
+    return {
+      totalCount,
+      hasNext: end < totalCount,
+    };
+  }
+
+  private getTotalCount($td1: Cheerio) {
+    const text = $td1.text().replace(/^(.*?)検索結果　(\d+)件中(.*?)$/, '$2');
+    return parseInt(text, 10);
+  }
+
+  private getCurrentRange($td2: Cheerio): [number, number] | null {
+    const result = /(\d+)件～(\d+)件/.exec($td2.text());
+    if (result !== null) {
+      return [parseInt(result[1], 10), parseInt(result[2], 10)];
+    } else {
+      return null;
+    }
   }
 }
