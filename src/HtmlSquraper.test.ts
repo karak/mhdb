@@ -4,14 +4,21 @@ import Work from './Work';
 import * as fs from 'fs';
 import * as path from 'path';
 
+
 describe('HtmlSquraper', () => {
-  it('parse simple HTML.', () => {
-    const html = fs.readFileSync(path.join(__dirname, '../test-data/simple-result.html'), 'utf-8');
-    const squraper = new HtmlSquraper();
-
+  const squraper = new HtmlSquraper();
+  function parseTestFile(fileName: string) {
+    const html = fs.readFileSync(path.join(__dirname, '../test-data', fileName), 'utf-8');
     const result = squraper.parseWorks(html);
+    return result;
+  }
 
-    const expected: SearchResult<Work> = {
+  function expectFileToBeReadAs(testFile: string, expected: SearchResult<Work>) {
+    expect(parseTestFile(testFile)).toEqual(expected);
+  }
+
+  it('parse simple HTML.', () => {
+    expectFileToBeReadAs('simple-result.html', {
       items: [{
         id: '1',
         body: 'work1',
@@ -23,8 +30,6 @@ describe('HtmlSquraper', () => {
       }],
       totalCount: 2,
       hasNext: false,
-    };
-
-    expect(result).toEqual(expected);
+    });
   });
 });
