@@ -106,4 +106,15 @@ describe('HtmlSquraper', () => {
       expect(result.totalCount).toBe(0);
     });
   });
+
+  it('parses HTML of test case 1', () => {
+    const result = parseTestFile('test-case1.html');
+    expect(result.items).toContainEqual({
+      id: '31191',
+      body: '「アンタレスの食」てふ過ぎて夜の桜',
+      author: '横山房子',
+    });
+    expect(result.hasNext).toBe(true);
+    expect(result.totalCount).toBe(449);
+  });
 });
