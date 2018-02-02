@@ -12,13 +12,12 @@ export default class HtmlSquraper {
 
     // The following line -- even "empty" map function -- causes out of memory. BUG of Cheerio?
     const items = $trs.map((i, tr) => {
-      const $td1 = $('td:first-child', this as any);
-      const $td2 = $('td:nth-child(2)', this as any);
-      const id = this.getCid($td1);
-      const body = this.getBody($td1);
-      const author = this.getAuthor($td2);
+      const $tds = $('td', tr);
+      const id = this.getCid($tds.eq(0));
+      const body = this.getBody($tds.eq(0));
+      const author = this.getAuthor($tds.eq(1));
       return { id, body, author } as Work;
-    }) as any as Work[]; // Quickfix for @types/cheerio v0.22.0
+    }).get() as any as Work[]; // Quickfix for @types/cheerio v0.22.0
 
     return { items, totalCount, hasNext };
   }
