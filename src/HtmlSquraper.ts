@@ -56,13 +56,20 @@ export default class HtmlSquraper {
   private parseCountRows($: CheerioStatic) {
     const $tds = $('a[name="result"] + table table > tbody > tr:last-child > td table td');
 
-    const totalCount = this.getTotalCount($tds.eq(0));
-    const [start, end] = this.getCurrentRange($tds.eq(1)) || [0, totalCount];
+    if ($tds.length === 2) {
+      const totalCount = this.getTotalCount($tds.eq(0));
+      const [start, end] = this.getCurrentRange($tds.eq(1)) || [0, totalCount];
 
-    return {
-      totalCount,
-      hasNext: end < totalCount,
-    };
+      return {
+        totalCount,
+        hasNext: end < totalCount,
+      };
+    } else {
+      return {
+        totalCount: 0,
+        hasNext: false,
+      };
+    }
   }
 
   private getTotalCount($td1: Cheerio) {

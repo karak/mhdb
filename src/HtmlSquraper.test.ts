@@ -68,4 +68,11 @@ describe('HtmlSquraper', () => {
       hasNext: false,
     });
   });
+  it('parse "NOT FOUND" html.', () => {
+    expectFileToBeReadAs('not-found.html', {
+      items: [],
+      totalCount: 0,
+      hasNext: false,
+    });
+  });
 });

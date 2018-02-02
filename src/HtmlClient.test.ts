@@ -18,6 +18,11 @@ describe('HtmlClient', () => {
           expect(html).toMatch(/さくら咲けさくら咲くあゝ桜かな/);
           expect(rangePart(html)).toMatch(/51件～100件/);
         });
+
+        it('retrieves nothing', async () => {
+          const html = await client.searchWorks({ kigo: '昼の秋' });
+          expect(html).toMatch(/該当する俳句は見つかりませんでした/);
+        });
       });
 
       describe('by author(surname or penname)', () => {
@@ -57,8 +62,6 @@ describe('HtmlClient', () => {
           expect(html).toMatch(/杉本雷造/);
         });
       });
-
-      // TODO: No works found
     });
   });
 });
