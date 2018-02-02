@@ -75,4 +75,35 @@ describe('HtmlSquraper', () => {
       hasNext: false,
     });
   });
+
+  describe('Against real results', () => {
+    it('parses single HTML', () => {
+      const result = parseTestFile('search-result1.html');
+      expect(result.items).toContainEqual({
+        id: '31559',
+        body: '骨はかく崩るるならむ霜柱',
+        author: '松林尚志',
+      });
+      expect(result.hasNext).toBe(false);
+      expect(result.totalCount).toBe(28);
+    });
+
+    it('parses pagenated HTML 1/2', () => {
+      const result = parseTestFile('search-result2-1.html');
+      expect(result.items).toContainEqual({
+        id: '28841',
+        body: '物言えば耳に聞こえて秋の暮',
+        author: '和田悟朗',
+      });
+      expect(result.hasNext).toBe(false);
+      expect(result.totalCount).toBe(94);
+    });
+
+    it('parses HTML with no items', () => {
+      const result = parseTestFile('search-result2-2.html');
+      expect(result.items).toEqual([]);
+      expect(result.hasNext).toBe(false);
+      expect(result.totalCount).toBe(0);
+    });
+  });
 });

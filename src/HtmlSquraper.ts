@@ -6,8 +6,9 @@ export default class HtmlSquraper {
   parseWorks(html: string): SearchResult<Work> {
     const $ = this.load(html);
 
+    const totalCount = this.parseTotalCountRow($) || 0;
     const $trs = this.parseWorkRows($);
-    const { totalCount, hasNext } = this.parseCountRows($);
+    const { hasNext } = this.parseCountRows($);
 
     const items = $trs.map((i, tr) => {
       const $tds = $('td', tr);
@@ -29,9 +30,22 @@ export default class HtmlSquraper {
     });
   }
 
+  private parseTotalCountRow($: CheerioStatic) {
+    const text = $('a[name="top"] + br + table + table tr td:first-child').text();
+    const result = /以下の(\d+)件が検索されました。/.exec(text);
+    if (result !== null) {
+      return parseInt(result[1], 10);
+    } else {
+      return undefined;
+    }
+  }
+
   private parseWorkRows($: CheerioStatic) {
     let $trs = $('a[name="result"] + table a[name="top"] + br + table + table + table tr');
-    $trs = $trs.slice(0, Math.max(0, $trs.length - 1));
+    if ($trs.length >= 2) {
+      // chop first header row and last empty row.
+      $trs = $trs.slice(1, Math.max(0, $trs.length - 1));
+    }
     return $trs;
   }
 
@@ -58,15 +72,15 @@ export default class HtmlSquraper {
 
     if ($tds.length === 2) {
       const totalCount = this.getTotalCount($tds.eq(0));
-      const [start, end] = this.getCurrentRange($tds.eq(1)) || [0, totalCount];
+      const hasNext = this.getHasNext($tds.eq(1));
 
       return {
         totalCount,
-        hasNext: end < totalCount,
+        hasNext,
       };
     } else {
       return {
-        totalCount: 0,
+        totalCount: undefined,
         hasNext: false,
       };
     }
@@ -77,12 +91,8 @@ export default class HtmlSquraper {
     return parseInt(text, 10);
   }
 
-  private getCurrentRange($td2: Cheerio): [number, number] | null {
-    const result = /(\d+)件～(\d+)件/.exec($td2.text());
-    if (result !== null) {
-      return [parseInt(result[1], 10), parseInt(result[2], 10)];
-    } else {
-      return null;
-    }
+  private getHasNext($td2: Cheerio): boolean {
+    const result = /(\d+)件～(\d+)件　次へ/.exec($td2.text());
+    return result !== null;
   }
 }
