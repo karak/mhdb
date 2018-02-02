@@ -24,7 +24,7 @@ describe('SearchClient', () => {
   });
 
   it('should chain 2 methods.', async () => {
-    const result = await searchClient.searchWorks();
+    const result = await searchClient.searchWorks({ kigo: '' });
     expect(result).toBe(work);
   });
 });
