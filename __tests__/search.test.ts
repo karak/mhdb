@@ -1,4 +1,4 @@
-import search from './search';
+import search from '../src/search';
 
 describe('search', () => {
   describe.skip('Production server', () => {
