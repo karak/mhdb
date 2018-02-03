@@ -44,7 +44,7 @@ export default class HtmlSquraper {
     let $trs = $('a[name="result"] + table a[name="top"] + br + table + table + table tr');
     if ($trs.length >= 2) {
       // chop first header row and last empty row.
-      $trs = $trs.slice(1, Math.max(0, $trs.length - 1));
+      $trs = $trs.slice(1, $trs.length - 1);
     }
     return $trs;
   }
