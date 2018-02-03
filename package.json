@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "yarn run jest",
+    "coverage": "yarn test --coverage",
     "build": "yarn run lint && yarn run tsc",
     "lint": "yarn run tslint --project .",
     "prepublish": "yarn run build"
