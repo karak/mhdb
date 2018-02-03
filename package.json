@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/cheerio": "^0.22.7",
     "@types/jest": "^21.1.6",
+    "@types/request-promise-native": "^1.0.13",
     "jest": "^21.2.1",
     "ts-jest": "^21.2.2",
     "tslint": "^5.8.0",
@@ -22,6 +23,7 @@
     "typescript": "^2.6.1"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2"
+    "cheerio": "^1.0.0-rc.2",
+    "request-promise-native": "^1.0.5"
   }
 }

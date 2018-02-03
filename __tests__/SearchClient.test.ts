@@ -1,8 +1,8 @@
-jest.mock('./HtmlClient');
-jest.mock('./HtmlSquraper');
-import SearchClient from './SearchClient';
-import HtmlClient from './HtmlClient';
-import HtmlSquraper from './HtmlSquraper';
+jest.mock('../src/HtmlClient');
+jest.mock('../src/HtmlSquraper');
+import SearchClient from '../src/SearchClient';
+import HtmlClient from '../src/HtmlClient';
+import HtmlSquraper from '../src/HtmlSquraper';
 
 describe('SearchClient', () => {
   const searchClient = new SearchClient('https://stub.nowhere');
@@ -24,7 +24,7 @@ describe('SearchClient', () => {
   });
 
   it('should chain 2 methods.', async () => {
-    const result = await searchClient.searchWorks();
+    const result = await searchClient.searchWorks({ kigo: '' });
     expect(result).toBe(work);
   });
 });

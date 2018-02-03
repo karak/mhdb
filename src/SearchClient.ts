@@ -1,4 +1,4 @@
-import HtmlClient from './HtmlClient';
+import HtmlClient, { Query } from './HtmlClient';
 import HtmlSquraper from './HtmlSquraper';
 import SearchResult from './SearchResult';
 import Work from './Work';
@@ -20,9 +20,7 @@ export default class SearchClient {
     this.squraper = new HtmlSquraper();
   }
 
-  async searchWorks(): Promise<SearchResult<Work>> {
-    const html = await this.client.searchWorks();
-    const works = await this.squraper.parseWorks(html);
-    return works;
+  searchWorks(query: Query): Promise<SearchResult<Work>> {
+    return this.client.searchWorks(query).then(html => this.squraper.parseWorks(html));
   }
 }
