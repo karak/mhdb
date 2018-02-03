@@ -82,7 +82,6 @@ export default class HtmlSquraper {
         hasNext,
       };
     } else {
-      const htmlAll = $tds.map((i, x) => $(x).html()).get().join('\r\n');
       return {
         totalCount: undefined,
         hasNext: false,
