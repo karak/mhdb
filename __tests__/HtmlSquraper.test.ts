@@ -117,4 +117,15 @@ describe('HtmlSquraper', () => {
     expect(result.hasNext).toBe(true);
     expect(result.totalCount).toBe(449);
   });
+
+  it('parses HTML that has empty work', () => {
+    const result = parseTestFile('empty-work-result.html');
+    expect(result.items).toEqual([{
+      id: undefined,
+      body: '',
+      author: '',
+    }]);
+    expect(result.hasNext).toBe(false);
+    expect(result.totalCount).toBe(1);
+  });
 });
