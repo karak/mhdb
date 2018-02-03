@@ -95,7 +95,7 @@ describe('HtmlSquraper', () => {
         body: '物言えば耳に聞こえて秋の暮',
         author: '和田悟朗',
       });
-      expect(result.hasNext).toBe(false);
+      expect(result.hasNext).toBe(true);
       expect(result.totalCount).toBe(94);
     });
 
