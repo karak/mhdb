@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "yarn run test:unit",
+    "test:all": "yarn run test:unit && yarn run test:integration",
     "test:unit": "yarn run jest",
     "test:integration": "yarn run jest --config jest.config.integration.js",
     "coverage": "yarn test --coverage",
