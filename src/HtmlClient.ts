@@ -49,8 +49,12 @@ export default class HtmlClient {
     this.host = host;
   }
 
-  async searchWorks(query: Query): Promise<string> {
+  searchWorks(query: Query): Promise<string> {
+    return this.buildSearchPromiseURL(query).then(url => request.get(url) as Promise<string>);
+  }
 
+  /** Build URL "search.php?..." that satisfies the query */
+  private buildSearchURL(query: Query) {
     const kigo = makeQueryComponent(query, 'kigo');
     const author = makeQueryComponent(query, 'author', 'author_name');
     const first5 = makeQueryComponent(query, 'first5');
@@ -63,6 +67,11 @@ export default class HtmlClient {
       `search_type=and&next_i=${query.page}`;
     const queryString = `?${and}${kigo}${author}${first5}${last5}${keyword}${database}${order}`;
     const url = `http://${this.host}/search.php${queryString}`;
-    return await request.get(url) as string;
+    return url;
+  }
+
+  /** Promisified @see {buildSearchURL} */
+  private buildSearchPromiseURL(query: Query) {
+    return new Promise<string>(resolve => resolve(this.buildSearchURL(query)));
   }
 }

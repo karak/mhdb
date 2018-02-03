@@ -20,9 +20,7 @@ export default class SearchClient {
     this.squraper = new HtmlSquraper();
   }
 
-  async searchWorks(query: Query): Promise<SearchResult<Work>> {
-    const html = await this.client.searchWorks(query);
-    const works = await this.squraper.parseWorks(html);
-    return works;
+  searchWorks(query: Query): Promise<SearchResult<Work>> {
+    return this.client.searchWorks(query).then(html => this.squraper.parseWorks(html));
   }
 }
