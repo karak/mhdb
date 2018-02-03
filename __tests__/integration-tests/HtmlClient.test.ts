@@ -1,7 +1,7 @@
-import HtmlClient from '../src/HtmlClient';
+import HtmlClient from '../../src/HtmlClient';
 
 describe('HtmlClient', () => {
-  describe.skip('Production server', () => {
+  describe('Production server', () => {
     // The REAL server.
     // Assume it isn't down.
     const client = new HtmlClient('www.haiku-data.jp');

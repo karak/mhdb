@@ -1,7 +1,7 @@
-import search from '../src/search';
+import search from '../../src/search';
 
 describe('search', () => {
-  describe.skip('Production server', () => {
+  describe('Production server', () => {
     // The REAL server.
     // Assume it isn't down.
     it('returns first items', async () => {

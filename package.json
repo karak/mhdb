@@ -4,7 +4,9 @@
   "description": "Modern Haiku Database Gateway.",
   "main": "index.js",
   "scripts": {
-    "test": "yarn run jest",
+    "test": "yarn run test:unit",
+    "test:unit": "yarn run jest",
+    "test:integration": "yarn run jest --config jest.config.integration.js",
     "coverage": "yarn test --coverage",
     "build": "yarn run lint && yarn run tsc",
     "lint": "yarn run tslint --project .",

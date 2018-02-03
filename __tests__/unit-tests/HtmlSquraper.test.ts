@@ -1,6 +1,6 @@
-import HtmlSquraper from '../src/HtmlSquraper';
-import SearchResult from '../src/SearchResult';
-import Work from '../src/Work';
+import HtmlSquraper from '../../src/HtmlSquraper';
+import SearchResult from '../../src/SearchResult';
+import Work from '../../src/Work';
 import * as fs from 'fs';
 import * as path from 'path';
 
