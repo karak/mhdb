@@ -10,6 +10,10 @@ module.exports = {
     "js",
     "jsx",
     "json"
+  ],
+  "collectCoverageFrom": [
+    "src/**/*.{ts,tsx,js,jsx}",
+    "!**/node_modules/**",
   ]
 };
 
