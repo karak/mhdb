@@ -4,7 +4,7 @@ import Work from './Work';
 
 const client = new SearchClient('www.haiku-data.jp/');
 
-interface IncrementalResult<T> {
+export interface IncrementalResult<T> {
   items: ReadonlyArray<T>;
   moreItems?: () => Promise<IncrementalResult<T>>;
 }
