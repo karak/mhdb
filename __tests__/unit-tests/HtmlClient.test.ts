@@ -88,5 +88,5 @@ describe('HtmlClient', () => {
 });
 
 function getQueryParams(urlString: string) {
-  return qs.parse(url.parse(urlString).query);
+  return qs.parse(url.parse(urlString).query!);
 }
