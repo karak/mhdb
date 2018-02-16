@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "yarn run test:unit",
+    "test:all": "yarn run test:unit && yarn run test:integration",
     "test:unit": "yarn run jest",
     "test:integration": "yarn run jest --config jest.config.integration.js",
+    "test:ci": "yarn run test:unit --coverage && yarn run test:integration && cat ./coverage/lcov.info | $(npm bin)/../coveralls/bin/coveralls.js && rm -rf ./coverage",
     "coverage": "yarn test --coverage",
     "build": "yarn run lint && yarn run tsc",
-    "lint": "yarn run tslint --project .",
-    "prepublish": "yarn run build"
+    "lint": "yarn run tslint --project ."
   },
   "author": "Karak",
   "license": "MIT",
@@ -20,6 +21,7 @@
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^21.1.6",
     "@types/node-fetch": "^1.6.7",
+    "coveralls": "^3.0.0",
     "jest": "^21.2.1",
     "ts-jest": "^21.2.2",
     "tslint": "^5.8.0",
@@ -29,5 +31,6 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "isomorphic-fetch": "^2.2.1"
-  }
+  },
+  "repository": "https://github.com/karak/mhdb"
 }

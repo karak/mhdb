@@ -1,6 +1,8 @@
 import search from '../../src/search';
 
 describe('search', () => {
+  jest.setTimeout(20 * 1000);
+
   describe('Production server', () => {
     // The REAL server.
     // Assume it isn't down.

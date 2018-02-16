@@ -1,6 +1,8 @@
 import HtmlClient from '../../src/HtmlClient';
 
 describe('HtmlClient', () => {
+  jest.setTimeout(10 * 1000);
+
   describe('Production server', () => {
     // The REAL server.
     // Assume it isn't down.
