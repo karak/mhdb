@@ -3,7 +3,7 @@ module.exports = {
     "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
   "testRegex": "/__tests__/unit-tests/.*\\.(jsx?|tsx?)$",
-  "testPathIgnorePatterns": ["node_modules", "/__tests__/helpers/.*"],
+  "testPathIgnorePatterns": ["node_modules", "/__tests__/helpers/.*", "<rootDir>/lib/.*"],
   "moduleFileExtensions": [
     "ts",
     "tsx",
