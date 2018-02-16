@@ -30,13 +30,11 @@ export default class HtmlSquraper {
     });
   }
 
-  private parseTotalCountRow($: CheerioStatic) {
+  private parseTotalCountRow($: CheerioStatic): number | undefined {
     const text = $('a[name="top"] + br + table + table tr td:first-child').text();
     const result = /以下の(\d+)件が検索されました。/.exec(text);
     if (result !== null) {
       return parseInt(result[1], 10);
-    } else {
-      return undefined;
     }
   }
 
@@ -81,13 +79,12 @@ export default class HtmlSquraper {
         totalCount,
         hasNext,
       };
-    } else {
-      const htmlAll = $tds.map((i, x) => $(x).html()).get().join('\r\n');
-      return {
-        totalCount: undefined,
-        hasNext: false,
-      };
     }
+    const htmlAll = $tds.map((i, x) => $(x).html()).get().join('\r\n');
+    return {
+      totalCount: undefined,
+      hasNext: false,
+    };
   }
 
   private getTotalCount($td1: Cheerio) {
