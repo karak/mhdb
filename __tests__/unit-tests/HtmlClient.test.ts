@@ -1,13 +1,13 @@
-jest.mock('request-promise-native');
+jest.mock('../../src/getString');
 import * as url from 'url';
 import * as qs from 'querystring';
-import * as requestPromise from 'request-promise-native';
+import getString from '../../src/getString';
 import HtmlClient from '../../src/HtmlClient';
 
 describe('HtmlClient', () => {
   const HOST = 'localhost/nowhere';
   const client = new HtmlClient(HOST);
-  const spy = jest.spyOn(requestPromise, 'get');
+  const spy = getString as any as jest.MockInstance<Promise<string>>;
 
   describe('searchWorks', () => {
     it('search by kigo', async () => {
@@ -81,12 +81,11 @@ describe('HtmlClient', () => {
 
   beforeEach(() => {
     spy.mockReset();
-    spy.mockRestore();
 
     jest.resetAllMocks();
   });
 });
 
 function getQueryParams(urlString: string) {
-  return qs.parse(url.parse(urlString).query);
+  return qs.parse(url.parse(urlString).query!);
 }

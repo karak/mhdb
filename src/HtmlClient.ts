@@ -1,6 +1,5 @@
 import SearchResult from './SearchResult';
-import * as request from 'request-promise-native';
-import { Response } from 'request';
+import getString from './getString';
 
 /// 「現代俳句協会「現代俳句データベース」」
 // tslint:disable-next-line:max-line-length
@@ -50,7 +49,7 @@ export default class HtmlClient {
   }
 
   searchWorks(query: Query): Promise<string> {
-    return this.buildSearchPromiseURL(query).then(url => request.get(url) as Promise<string>);
+    return this.buildSearchPromiseURL(query).then(url => getString(url) as Promise<string>);
   }
 
   /** Build URL "search.php?..." that satisfies the query */
