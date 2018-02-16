@@ -8,7 +8,7 @@
     "test:all": "yarn run test:unit && yarn run test:integration",
     "test:unit": "yarn run jest",
     "test:integration": "yarn run jest --config jest.config.integration.js",
-    "test:ci": "npm run coverage && cat ./coverage/lcov.info | $(npm bin)/../coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test:ci": "npm run test:unit --coverage && yarn run test:integration && cat ./coverage/lcov.info | $(npm bin)/../coveralls/bin/coveralls.js && rm -rf ./coverage",
     "coverage": "yarn test --coverage",
     "build": "yarn run lint && yarn run tsc",
     "lint": "yarn run tslint --project ."
