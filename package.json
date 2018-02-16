@@ -4,7 +4,10 @@
   "description": "Modern Haiku Database Gateway.",
   "main": "index.js",
   "scripts": {
-    "test": "yarn run jest",
+    "test": "yarn run test:unit",
+    "test:unit": "yarn run jest",
+    "test:integration": "yarn run jest --config jest.config.integration.js",
+    "coverage": "yarn test --coverage",
     "build": "yarn run lint && yarn run tsc",
     "lint": "yarn run tslint --project .",
     "prepublish": "yarn run build"
@@ -17,7 +20,6 @@
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^21.1.6",
     "@types/node-fetch": "^1.6.7",
-    "@types/whatwg-fetch": "^0.0.33",
     "jest": "^21.2.1",
     "ts-jest": "^21.2.2",
     "tslint": "^5.8.0",

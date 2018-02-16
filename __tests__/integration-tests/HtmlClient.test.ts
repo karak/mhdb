@@ -1,4 +1,4 @@
-import HtmlClient from '../src/HtmlClient';
+import HtmlClient from '../../src/HtmlClient';
 
 describe('HtmlClient', () => {
   describe('Production server', () => {
