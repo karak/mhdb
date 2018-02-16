@@ -8,4 +8,5 @@ before_install:
 cache: yarn
 script:
   - yarn lint
+  - yarn build
   - yarn run test:ci
