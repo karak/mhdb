@@ -1,4 +1,4 @@
-import search from '../../src/search';
+import search from '../../../src/api/search';
 
 describe('search', () => {
   jest.setTimeout(20 * 1000);

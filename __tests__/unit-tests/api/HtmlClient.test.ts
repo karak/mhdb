@@ -1,8 +1,8 @@
-jest.mock('../../src/getString');
+jest.mock('../../../src/api/getString');
 import * as url from 'url';
 import * as qs from 'querystring';
-import getString from '../../src/getString';
-import HtmlClient from '../../src/HtmlClient';
+import getString from '../../../src/api/getString';
+import HtmlClient from '../../../src/api/HtmlClient';
 
 describe('HtmlClient', () => {
   const HOST = 'localhost/nowhere';

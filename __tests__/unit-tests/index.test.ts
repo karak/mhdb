@@ -1,4 +1,4 @@
-import search from '../../src/search';
+import search from '../../src/api/search';
 import * as mhdb from '../../src/index';
 
 describe('index', () => {
