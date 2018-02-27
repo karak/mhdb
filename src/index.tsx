@@ -75,12 +75,16 @@ class App extends React.Component<{}, AppState> {
             left={0}
             top={0}
             status={this.state.loading ? 'loading' : 'hide' } />
-          <div style={{ display: this.state.error === 'LOAD_FAILURE' }}>
+          <div style={{ display: this.doShowErrorIcon() ? 'auto' : 'none' }}>
             <ErrorIcon /><span>読み込みに失敗しました。</span>
           </div>
         </div>
       </MuiThemeProvider>
     );
+  }
+
+  private doShowErrorIcon() {
+    return this.state.error === 'LOAD_FAILURE';
   }
 }
 
