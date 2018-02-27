@@ -1,8 +1,8 @@
-jest.mock('../../src/SearchClient');
-import search, { IncrementalResult } from '../../src/search';
-import Work from '../../src/Work';
-import SearchResult from '../../src/SearchResult';
-import SearchClient from '../../src/SearchClient';
+jest.mock('../../../src/api/SearchClient');
+import search, { IncrementalResult } from '../../../src/api/search';
+import Work from '../../../src/api/Work';
+import SearchResult from '../../../src/api/SearchResult';
+import SearchClient from '../../../src/api/SearchClient';
 
 describe('search', () => {
   const mockSearchWorks: jest.MockInstance<Promise<IncrementalResult<Work>>> =

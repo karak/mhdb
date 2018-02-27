@@ -1,4 +1,4 @@
-import './polyfill/fetch';
+import '../polyfill/fetch';
 
 /**
  * Publish 'GET' Request to the specified URL

@@ -1,6 +1,6 @@
-import HtmlSquraper from '../../src/HtmlSquraper';
-import SearchResult from '../../src/SearchResult';
-import Work from '../../src/Work';
+import HtmlSquraper from '../../../src/api/HtmlSquraper';
+import SearchResult from '../../../src/api/SearchResult';
+import Work from '../../../src/api/Work';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -8,7 +8,7 @@ import * as path from 'path';
 describe('HtmlSquraper', () => {
   const squraper = new HtmlSquraper();
   function parseTestFile(fileName: string) {
-    const html = fs.readFileSync(path.join(__dirname, './test-data', fileName), 'utf-8');
+    const html = fs.readFileSync(path.join(__dirname, '../test-data', fileName), 'utf-8');
     const result = squraper.parseWorks(html);
     return result;
   }

@@ -1,4 +1,4 @@
-import getString from '../../src/getString';
+import getString from '../../../src/api/getString';
 
 describe('getString', () => {
   it('can fetch html from "example.com"', async () => {

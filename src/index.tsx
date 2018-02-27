@@ -9,8 +9,8 @@ import FontIcon from 'material-ui/FontIcon';
 import { red500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import search from './search';
-import Work from './Work';
+import search from './api/search';
+import Work from './api/Work';
 
 // tslint:disable-next-line:variable-name
 const ErrorIcon = () => (

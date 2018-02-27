@@ -1,8 +1,8 @@
-jest.mock('../../src/HtmlClient');
-jest.mock('../../src/HtmlSquraper');
-import SearchClient from '../../src/SearchClient';
-import HtmlClient from '../../src/HtmlClient';
-import HtmlSquraper from '../../src/HtmlSquraper';
+jest.mock('../../../src/api/HtmlClient');
+jest.mock('../../../src/api/HtmlSquraper');
+import SearchClient from '../../../src/api/SearchClient';
+import HtmlClient from '../../../src/api/HtmlClient';
+import HtmlSquraper from '../../../src/api/HtmlSquraper';
 
 describe('SearchClient', () => {
   const searchClient = new SearchClient('https://stub.nowhere');

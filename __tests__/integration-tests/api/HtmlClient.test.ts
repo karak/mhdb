@@ -1,4 +1,4 @@
-import HtmlClient from '../../src/HtmlClient';
+import HtmlClient from '../../../src/api/HtmlClient';
 
 describe('HtmlClient', () => {
   jest.setTimeout(10 * 1000);
