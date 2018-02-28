@@ -14,10 +14,10 @@ describe('SearchClient', () => {
   </html>`;
   const work = {};
 
-  jest.spyOn(HtmlClient.prototype, 'searchWorks')
+  jest
+    .spyOn(HtmlClient.prototype, 'searchWorks')
     .mockReturnValue(new Promise(resolve => resolve(html)));
-  jest.spyOn(HtmlSquraper.prototype, 'parseWorks')
-    .mockReturnValueOnce(work);
+  jest.spyOn(HtmlSquraper.prototype, 'parseWorks').mockReturnValueOnce(work);
 
   beforeEach(() => {
     jest.resetModules();
