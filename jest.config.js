@@ -31,6 +31,11 @@ module.exports = {
       "lines": 0,
     }
   },
-  "mapCoverage": true
+  "mapCoverage": true,
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "./tsconfig.test.json"
+    }
+  }
 };
 
