@@ -21,6 +21,8 @@ export default class SearchClient {
   }
 
   searchWorks(query: Query): Promise<SearchResult<Work>> {
-    return this.client.searchWorks(query).then(html => this.squraper.parseWorks(html));
+    return this.client
+      .searchWorks(query)
+      .then(html => this.squraper.parseWorks(html));
   }
 }

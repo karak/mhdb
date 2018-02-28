@@ -7,7 +7,7 @@ import HtmlClient from '../../../src/api/HtmlClient';
 describe('HtmlClient', () => {
   const HOST = 'localhost/nowhere';
   const client = new HtmlClient(HOST);
-  const spy = getString as any as jest.MockInstance<Promise<string>>;
+  const spy = (getString as any) as jest.MockInstance<Promise<string>>;
 
   describe('searchWorks', () => {
     it('search by kigo', async () => {
