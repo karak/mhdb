@@ -37,7 +37,7 @@ const enc = encodeURIComponent;
 function makeQueryComponent(
   query: Query,
   propertyName: string,
-  parameterName?: string
+  parameterName?: string,
 ) {
   const actualParameterName = parameterName || propertyName;
   return propertyName in query
@@ -57,7 +57,7 @@ export default class HtmlClient {
 
   searchWorks(query: Query): Promise<string> {
     return this.buildSearchPromiseURL(query).then(
-      url => getString(url) as Promise<string>
+      url => getString(url) as Promise<string>,
     );
   }
 

@@ -28,13 +28,13 @@ export default class HtmlSquraper {
       xmlMode: false,
       lowerCaseTags: false,
       lowerCaseAttributeNames: false,
-      normalizeWhitespace: true
+      normalizeWhitespace: true,
     });
   }
 
   private parseTotalCountRow($: CheerioStatic): number | undefined {
     const text = $(
-      'a[name="top"] + br + table + table tr td:first-child'
+      'a[name="top"] + br + table + table tr td:first-child',
     ).text();
     const result = /以下の(\d+)件が検索されました。/.exec(text);
     if (result !== null) {
@@ -44,7 +44,7 @@ export default class HtmlSquraper {
 
   private parseWorkRows($: CheerioStatic) {
     let $trs = $(
-      'a[name="result"] + table a[name="top"] + br + table + table + table tr'
+      'a[name="result"] + table a[name="top"] + br + table + table + table tr',
     );
     if ($trs.length >= 2) {
       // chop first header row and last empty row.
@@ -75,8 +75,8 @@ export default class HtmlSquraper {
     const $tds = $(
       [
         'a[name="result"] + table table > tbody > tr:last-child > td',
-        'table tr:first-child td'
-      ].join(' ')
+        'table tr:first-child td',
+      ].join(' '),
     );
 
     if ($tds.length === 2) {
@@ -85,12 +85,12 @@ export default class HtmlSquraper {
 
       return {
         totalCount,
-        hasNext
+        hasNext,
       };
     }
     return {
       totalCount: undefined,
-      hasNext: false
+      hasNext: false,
     };
   }
 

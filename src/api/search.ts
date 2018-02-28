@@ -10,17 +10,17 @@ export interface IncrementalResult<T> {
 }
 
 export default async function search(
-  query: Query
+  query: Query,
 ): Promise<IncrementalResult<Work>> {
   return await getItems(query);
 }
 
 async function getItems(
   query: Query,
-  page?: number
+  page?: number,
 ): Promise<IncrementalResult<Work>> {
   const result = await client.searchWorks(
-    Object.assign({}, query, { page } as any)
+    Object.assign({}, query, { page } as any),
   );
   const nextPage = page !== undefined ? page + 1 : 1;
 
@@ -28,6 +28,6 @@ async function getItems(
     items: result.items,
     moreItems: result.hasNext
       ? async () => getItems(query, nextPage)
-      : undefined
+      : undefined,
   };
 }
