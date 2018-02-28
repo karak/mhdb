@@ -5,4 +5,3 @@ export = {
 };
 
 (window as any).search = search;
-

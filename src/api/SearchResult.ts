@@ -8,4 +8,4 @@ export default interface SearchResult<T> {
   totalCount: number;
   /** whether result has more items or not */
   hasNext: boolean;
-}
+};
