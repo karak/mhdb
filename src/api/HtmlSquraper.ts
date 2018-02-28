@@ -10,13 +10,15 @@ export default class HtmlSquraper {
     const $trs = this.parseWorkRows($);
     const { hasNext } = this.parseCountRows($);
 
-    const items = $trs.map((i, tr) => {
-      const $tds = $('td', tr);
-      const id = this.getCid($tds.eq(0));
-      const body = this.getBody($tds.eq(0));
-      const author = this.getAuthor($tds.eq(1));
-      return { id, body, author } as Work;
-    }).get() as any as Work[]; // Quickfix for @types/cheerio v0.22.0
+    const items = ($trs
+      .map((i, tr) => {
+        const $tds = $('td', tr);
+        const id = this.getCid($tds.eq(0));
+        const body = this.getBody($tds.eq(0));
+        const author = this.getAuthor($tds.eq(1));
+        return { id, body, author } as Work;
+      })
+      .get() as any) as Work[]; // Quickfix for @types/cheerio v0.22.0
 
     return { items, totalCount, hasNext };
   }
@@ -26,12 +28,14 @@ export default class HtmlSquraper {
       xmlMode: false,
       lowerCaseTags: false,
       lowerCaseAttributeNames: false,
-      normalizeWhitespace: true,
+      normalizeWhitespace: true
     });
   }
 
   private parseTotalCountRow($: CheerioStatic): number | undefined {
-    const text = $('a[name="top"] + br + table + table tr td:first-child').text();
+    const text = $(
+      'a[name="top"] + br + table + table tr td:first-child'
+    ).text();
     const result = /以下の(\d+)件が検索されました。/.exec(text);
     if (result !== null) {
       return parseInt(result[1], 10);
@@ -39,7 +43,9 @@ export default class HtmlSquraper {
   }
 
   private parseWorkRows($: CheerioStatic) {
-    let $trs = $('a[name="result"] + table a[name="top"] + br + table + table + table tr');
+    let $trs = $(
+      'a[name="result"] + table a[name="top"] + br + table + table + table tr'
+    );
     if ($trs.length >= 2) {
       // chop first header row and last empty row.
       $trs = $trs.slice(1, $trs.length - 1);
@@ -48,7 +54,7 @@ export default class HtmlSquraper {
   }
 
   private getCid($td1: Cheerio) {
-    const href = $td1.find('a').attr('href') as (string | undefined);
+    const href = $td1.find('a').attr('href') as string | undefined;
     const id = href !== undefined ? this.parseHref(href) : undefined;
     return id;
   }
@@ -66,10 +72,12 @@ export default class HtmlSquraper {
   }
 
   private parseCountRows($: CheerioStatic) {
-    const $tds = $([
-      'a[name="result"] + table table > tbody > tr:last-child > td',
-      'table tr:first-child td',
-    ].join(' '));
+    const $tds = $(
+      [
+        'a[name="result"] + table table > tbody > tr:last-child > td',
+        'table tr:first-child td'
+      ].join(' ')
+    );
 
     if ($tds.length === 2) {
       const totalCount = this.getTotalCount($tds.eq(0));
@@ -77,12 +85,12 @@ export default class HtmlSquraper {
 
       return {
         totalCount,
-        hasNext,
+        hasNext
       };
     }
     return {
       totalCount: undefined,
-      hasNext: false,
+      hasNext: false
     };
   }
 

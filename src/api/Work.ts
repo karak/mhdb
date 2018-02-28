@@ -8,4 +8,4 @@ export default interface Work {
   body: string;
   /** Author */
   author: string;
-}
+};
