@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {
-  List,
-  ListItem,
-} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import FontIcon from 'material-ui/FontIcon';
 import { red500 } from 'material-ui/styles/colors';
@@ -14,7 +11,9 @@ import Work from './api/Work';
 
 // tslint:disable-next-line:variable-name
 const ErrorIcon = () => (
-  <FontIcon className="material-icons" color={red500}>error</FontIcon>
+  <FontIcon className="material-icons" color={red500}>
+    error
+  </FontIcon>
 );
 
 interface WorkListProps {
@@ -74,9 +73,11 @@ class App extends React.Component<{}, AppState> {
           <RefreshIndicator
             left={0}
             top={0}
-            status={this.state.loading ? 'loading' : 'hide' } />
+            status={this.state.loading ? 'loading' : 'hide'}
+          />
           <div style={{ display: this.doShowErrorIcon() ? 'auto' : 'none' }}>
-            <ErrorIcon /><span>読み込みに失敗しました。</span>
+            <ErrorIcon />
+            <span>読み込みに失敗しました。</span>
           </div>
         </div>
       </MuiThemeProvider>
