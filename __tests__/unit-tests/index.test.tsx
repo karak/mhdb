@@ -1,4 +1,4 @@
-import '../../src/polyfill/raf';
+import '../helpers/setup';
 import App from '../../src/containers/App';
 
 jest.mock('../../src/containers/App');
