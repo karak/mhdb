@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { List, ListItem } from 'material-ui/List';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
 import FontIcon from 'material-ui/FontIcon';
 import { red500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import ProgressRing from '../components/ProgressRing';
 import search from '../api/search';
 import Work from '../api/Work';
 
@@ -70,11 +70,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
-          <RefreshIndicator
-            left={0}
-            top={0}
-            status={this.state.loading ? 'loading' : 'hide'}
-          />
+          <ProgressRing loading={this.state.loading} />
           <div style={{ display: this.doShowErrorIcon() ? 'auto' : 'none' }}>
             <ErrorIcon />
             <span>読み込みに失敗しました。</span>
