@@ -2,6 +2,7 @@ import '../../helpers/setup';
 import * as React from 'react';
 import ProgressRing from '../../../src/components/ProgressRing';
 import { shallow } from 'enzyme';
+import { default as toJson } from 'enzyme-to-json';
 
 describe('ProgressRing', () => {
   describe('props loading', () => {
@@ -25,5 +26,11 @@ describe('ProgressRing', () => {
 
       expect(deepWrapper.prop('status')).toBe('hide');
     });
+  });
+
+  it('matches with snapshot', () => {
+    const tree = toJson(shallow(<ProgressRing />));
+
+    expect(tree).toMatchSnapshot();
   });
 });

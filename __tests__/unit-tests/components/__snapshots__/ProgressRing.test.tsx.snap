@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressRing matches with snapshot 1`] = `
+<RefreshIndicator
+  left={0}
+  percentage={0}
+  size={40}
+  status="loading"
+  top={0}
+/>
+`;
