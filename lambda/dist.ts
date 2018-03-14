@@ -1,15 +1,24 @@
-const fs = require('fs');
-const path = require('path');
+import 'source-map-support/register';
+import * as fs from 'fs';
+import * as path from 'path';
 
-const mime = {
-  'html': 'text/html',
-  'js': 'text/javascript',
+const mime: { [ext: string]: string } = {
+  html: 'text/html',
+  js: 'text/javascript',
 };
 
-exports.handler = (event, context, callback) => {
+interface Event {
+  path: string;
+}
+
+exports.handler = (
+  event: Event,
+  context: any,
+  callback: (err: any, data: any) => void,
+) => {
   const subpath = event.path;
   const contentType = mime[path.extname(subpath)];
-  const staticFilePath = path.join(__dirname , '..', subpath);
+  const staticFilePath = path.join(__dirname, '..', subpath);
 
   fs.readFile(staticFilePath, { encoding: 'utf-8' }, (err, data) => {
     if (!err) {

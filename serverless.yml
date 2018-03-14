@@ -6,6 +6,7 @@ package:
     - package.json
     - package-lock.json
     - .cache
+    - .build
     - __tests__/
     - .vscode
     - .DS_Store
@@ -15,6 +16,7 @@ package:
     - dist
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-offline
   - serverless-apigw-binary
 

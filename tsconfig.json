@@ -63,6 +63,7 @@
     "src/**/*.tsx",
     "src/**/*.ts",
     "__tests__/**/*.tsx",
-    "__tests__/**/*.ts"
+    "__tests__/**/*.ts",
+    "lambda/**/*.ts"
   ]
 }
