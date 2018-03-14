@@ -6,7 +6,7 @@ import '../polyfill/fetch';
  * @returns text content of response
  */
 export default function getString(url: string): Promise<string> {
-  return fetch(url, { method: 'get', mode: 'no-cors' }).then(
+  return fetch(url, { method: 'get', mode: 'cors' }).then(
     (response: Response) => {
       return response.text();
     },

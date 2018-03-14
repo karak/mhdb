@@ -46,6 +46,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
+          <WorkList items={this.state.items} />
           <ProgressRing loading={this.state.loading} />
           <div style={{ display: this.doShowErrorIcon() ? 'auto' : 'none' }}>
             <ErrorIcon />
