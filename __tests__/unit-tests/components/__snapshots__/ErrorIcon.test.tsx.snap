@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorIcon matches with snapshot 1`] = `
+<FontIcon
+  className="material-icons"
+  color="#f44336"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  error
+</FontIcon>
+`;

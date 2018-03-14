@@ -6,34 +6,10 @@ import { red500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ProgressRing from '../components/ProgressRing';
+import ErrorIcon from '../components/ErrorIcon';
+import WorkList from '../components/WorkList';
 import search from '../api/search';
 import Work from '../api/Work';
-
-// tslint:disable-next-line:variable-name
-const ErrorIcon = () => (
-  <FontIcon className="material-icons" color={red500}>
-    error
-  </FontIcon>
-);
-
-interface WorkListProps {
-  items?: ReadonlyArray<Work>;
-}
-
-// tslint:disable-next-line:variable-name
-const WorkList = (props: WorkListProps) => (
-  <List>
-    {(props.items || []).map(x => (
-      <ListItem
-        key={x.id}
-        primaryText={x.body}
-        secondaryText={x.author}
-        secondaryTextLines={1}
-      />
-    ))}
-    />
-  </List>
-);
 
 interface AppState {
   loading: boolean;

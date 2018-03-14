@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorIcon matches with snapshot 1`] = `
+<List>
+  <ListItem
+    autoGenerateNestedIndicator={true}
+    containerElement="span"
+    disableKeyboardFocus={false}
+    disabled={false}
+    initiallyOpen={false}
+    insetChildren={false}
+    key="work-1"
+    nestedItems={Array []}
+    nestedLevel={0}
+    onKeyboardFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onNestedListToggle={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    open={null}
+    primaryText="ABC"
+    primaryTogglesNestedList={false}
+    secondaryText="John"
+    secondaryTextLines={1}
+  />
+  <ListItem
+    autoGenerateNestedIndicator={true}
+    containerElement="span"
+    disableKeyboardFocus={false}
+    disabled={false}
+    initiallyOpen={false}
+    insetChildren={false}
+    key="work-2"
+    nestedItems={Array []}
+    nestedLevel={0}
+    onKeyboardFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onNestedListToggle={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    open={null}
+    primaryText="XYZ"
+    primaryTogglesNestedList={false}
+    secondaryText="Mary"
+    secondaryTextLines={1}
+  />
+</List>
+`;
