@@ -8,7 +8,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ProgressRing from '../components/ProgressRing';
 import ErrorIcon from '../components/ErrorIcon';
 import WorkList from '../components/WorkList';
-import search from '../api/search';
+import { default as search } from '../api-client/search';
 import Work from '../api/Work';
 
 interface AppState {
