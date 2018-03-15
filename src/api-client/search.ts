@@ -15,5 +15,5 @@ export default async function search(
     method: 'GET',
   })
     .then(response => response.json())
-    .then(json => JSON.parse(json));
+    .then(json => json);
 }
